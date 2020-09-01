@@ -9,6 +9,7 @@ const token = {
 	set(token) {
 		axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 	},
+
 	unset() {
 		axios.defaults.headers.common.Authorization = '';
 	},
@@ -17,12 +18,13 @@ const token = {
 const register = credential => dispatch => {
 	dispatch(authActions.registerRequest());
 
-	axios.post('/users/signup', credential).then(({ data }) => {
-		token.set(data.token);
-		dispatch(authActions.registerSuccess(data)).catch(error =>
-			dispatch(authActions.registerFailure(error)),
-		);
-	});
+	axios
+		.post('/users/signup', credential)
+		.then(({ data }) => {
+			token.set(data.token);
+			dispatch(authActions.registerSuccess(data));
+		})
+		.catch(error => dispatch(authActions.registerFailure(error)));
 };
 
 const logIn = credential => dispatch => {

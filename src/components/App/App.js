@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 //Components
 import Layout from '../Layout';
-import Spinner from '../Spinner';
+import Loader from '../Loader';
 //Router
 import routes from 'routes';
 //Redux
@@ -24,7 +24,7 @@ export class App extends Component {
 		return (
 			<BrowserRouter>
 				<Layout>
-					<Suspense fallback={<Spinner />}>
+					<Suspense fallback={<Loader />}>
 						<Switch>
 							{routes.map(router => (
 								<Route key={router.label} {...router} />
