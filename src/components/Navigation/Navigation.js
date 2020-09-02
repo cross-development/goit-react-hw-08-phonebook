@@ -10,9 +10,9 @@ const Navigation = () => (
 	<nav>
 		{routes.map(({ label, exact, path }) => (
 			<NavLink
+				to={path}
 				key={label}
 				exact={exact}
-				to={path}
 				className={styles.link}
 				activeClassName={styles.activeLink}
 			>

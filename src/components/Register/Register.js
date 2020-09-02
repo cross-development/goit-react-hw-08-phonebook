@@ -1,30 +1,40 @@
 //Core
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-//Redux
-import { authOperations } from 'redux/auth';
 //Styles
 import styles from './Register.module.css';
 
-class Register extends Component {
-	static propTypes = {
-		onRegister: PropTypes.func.isRequired,
-	};
+const Register = ({ name, email, password, handleChange, handleSubmit }) => (
+	<div>
+		<h1>Register page</h1>
 
-	state = {
-		name: null,
-		email: null,
-		password: null,
-	};
+		<form onSubmit={handleSubmit} className={styles.form}>
+			<label className={styles.label}>
+				Name
+				<input type="text" name="name" value={name} onChange={handleChange} />
+			</label>
 
-	render() {
-		return <form></form>;
-	}
-}
+			<label className={styles.label}>
+				Email
+				<input type="email" name="email" value={email} onChange={handleChange} />
+			</label>
 
-const mapDispatchToProps = {
-	onRegister: authOperations.register,
+			<label className={styles.label}>
+				Password
+				<input type="password" name="password" value={password} onChange={handleChange} />
+			</label>
+
+			<button type="submit">Register</button>
+		</form>
+	</div>
+);
+
+Register.propTypes = {
+	name: PropTypes.string.isRequired,
+	email: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	handleSubmit: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+export default Register;

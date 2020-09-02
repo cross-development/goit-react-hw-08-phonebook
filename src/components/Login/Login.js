@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
+//Core
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-//Redux
-import { authOperations } from 'redux/auth';
 //Styles
 import styles from './Login.module.css';
 
-class Login extends Component {
-	static propTypes = {
-		onLogin: PropTypes.func.isRequired,
-	};
+const Login = ({ email, password, handleChange, handleSubmit }) => (
+	<div>
+		<h1>Login page</h1>
 
-	state = {
-		name: '',
-		number: '',
-	};
+		<form onSubmit={handleSubmit} className={styles.form}>
+			<label className={styles.label}>
+				Email
+				<input type="email" name="email" value={email} onChange={handleChange} />
+			</label>
 
-	render() {
-		return <form></form>;
-	}
-}
+			<label className={styles.label}>
+				Password
+				<input type="password" name="password" value={password} onChange={handleChange} />
+			</label>
 
-const mapDispatchToProps = {
-	onLogin: authOperations.logIn,
+			<button type="submit" className={styles.button}>
+				Login
+			</button>
+		</form>
+	</div>
+);
+
+Login.propTypes = {
+	email: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	handleSubmit: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;
