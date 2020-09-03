@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const addContact = credential => dispatch => {
 	dispatch(contactsActions.addContactRequest());
-	console.log(credential);
+
 	axios
 		.post('/contacts', credential)
 		.then(({ data }) => dispatch(contactsActions.addContactSuccess(data)))

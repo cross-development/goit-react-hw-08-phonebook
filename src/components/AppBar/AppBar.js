@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 //Components
 import Logo from '../Logo';
+import AuthNav from '../AuthNav';
 import UserMenu from '../UserMenu';
 import Navigation from '../Navigation';
 //Redux
@@ -20,7 +21,7 @@ const AppBar = ({ isAuthenticated }) => (
 		</CSSTransition>
 
 		<Navigation />
-		{isAuthenticated && <UserMenu />}
+		{isAuthenticated ? <UserMenu /> : <AuthNav />}
 	</header>
 );
 

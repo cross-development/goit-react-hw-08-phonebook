@@ -1,11 +1,13 @@
 //Core
 import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 //Components
 import Layout from '../Layout';
 import Loader from '../Loader';
+import PublicRoute from '../PublicRoute';
+import PrivateRoute from '../PrivateRoute';
 //Router
 import routes from 'routes';
 //Redux
@@ -26,9 +28,13 @@ export class App extends Component {
 				<Layout>
 					<Suspense fallback={<Loader />}>
 						<Switch>
-							{routes.map(router => (
-								<Route key={router.label} {...router} />
-							))}
+							{routes.map(route =>
+								route.private ? (
+									<PrivateRoute key={route.path} {...route} />
+								) : (
+									<PublicRoute key={route.path} {...route} />
+								),
+							)}
 						</Switch>
 					</Suspense>
 				</Layout>
