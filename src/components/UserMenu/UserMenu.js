@@ -17,7 +17,7 @@ const UserMenu = ({ email, onLogout }) => (
 
 //Пофиксить проптайпы по имейлу
 UserMenu.propTypes = {
-	email: PropTypes.string,
+	email: PropTypes.string.isRequired,
 	onLogout: PropTypes.func.isRequired,
 };
 

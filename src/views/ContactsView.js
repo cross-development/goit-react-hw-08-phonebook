@@ -3,15 +3,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 //Components
-import ContactForm from 'components/ContactForm';
+import Main from 'components/Main';
 import Filter from 'components/Filter';
+import Section from 'components/Section';
 import ContactList from 'components/ContactList';
+import ContactForm from 'components/ContactForm';
 //Redux
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 
 class ContactsView extends Component {
 	static propTypes = {
 		onGetContacts: PropTypes.func.isRequired,
+		contacts: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 	};
 
 	componentDidMount() {
@@ -19,18 +22,27 @@ class ContactsView extends Component {
 	}
 
 	render() {
+		const { contacts } = this.props;
+
 		return (
-			<>
-				<ContactForm />
-				<Filter />
-				<ContactList />
-			</>
+			<Main>
+				<Section>
+					<ContactForm />
+					{contacts.length > 1 && <Filter />}
+				</Section>
+
+				{contacts.length > 0 && (
+					<Section>
+						<ContactList />
+					</Section>
+				)}
+			</Main>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	isLoadingContacts: contactsSelectors.getLoading(state),
+	contacts: contactsSelectors.getContacts(state),
 });
 
 const mapDispatchToProps = {

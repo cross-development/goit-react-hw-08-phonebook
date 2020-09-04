@@ -5,28 +5,50 @@ import PropTypes from 'prop-types';
 import styles from './Register.module.css';
 
 const Register = ({ name, email, password, handleChange, handleSubmit }) => (
-	<div>
-		<h1>Register page</h1>
+	<form onSubmit={handleSubmit} className={styles.form}>
+		<label className={styles.label}>
+			Name
+			<input
+				className={styles.input}
+				required
+				type="text"
+				name="name"
+				value={name}
+				autoComplete="off"
+				onChange={handleChange}
+			/>
+		</label>
 
-		<form onSubmit={handleSubmit} className={styles.form}>
-			<label className={styles.label}>
-				Name
-				<input type="text" name="name" value={name} onChange={handleChange} />
-			</label>
+		<label className={styles.label}>
+			Email
+			<input
+				className={styles.input}
+				required
+				type="email"
+				name="email"
+				value={email}
+				autoComplete="off"
+				onChange={handleChange}
+			/>
+		</label>
 
-			<label className={styles.label}>
-				Email
-				<input type="email" name="email" value={email} onChange={handleChange} />
-			</label>
+		<label className={styles.label}>
+			Password
+			<input
+				className={styles.input}
+				required
+				type="password"
+				name="password"
+				value={password}
+				autoComplete="off"
+				onChange={handleChange}
+			/>
+		</label>
 
-			<label className={styles.label}>
-				Password
-				<input type="password" name="password" value={password} onChange={handleChange} />
-			</label>
-
-			<button type="submit">Register</button>
-		</form>
-	</div>
+		<button className={styles.button} type="submit">
+			Register
+		</button>
+	</form>
 );
 
 Register.propTypes = {

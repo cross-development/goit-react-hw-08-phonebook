@@ -1,11 +1,12 @@
 .link {
-	display: 'inline-block';
-	text-decoration: 'none';
+	display: inline-block;
+	text-decoration: none;
 	padding: 12px;
 	font-weight: 700;
-	color: '#2A363B';
+	text-transform: uppercase;
+	color: #212121;
 }
 
 .activeLink {
-	color: '#E84A5F';
+	color: #3947a7;
 }

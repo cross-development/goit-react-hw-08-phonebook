@@ -5,25 +5,37 @@ import PropTypes from 'prop-types';
 import styles from './Login.module.css';
 
 const Login = ({ email, password, handleChange, handleSubmit }) => (
-	<div>
-		<h1>Login page</h1>
+	<form onSubmit={handleSubmit} className={styles.form}>
+		<label className={styles.label}>
+			Email
+			<input
+				className={styles.input}
+				required
+				type="email"
+				name="email"
+				value={email}
+				autoComplete="off"
+				onChange={handleChange}
+			/>
+		</label>
 
-		<form onSubmit={handleSubmit} className={styles.form}>
-			<label className={styles.label}>
-				Email
-				<input type="email" name="email" value={email} onChange={handleChange} />
-			</label>
+		<label className={styles.label}>
+			Password
+			<input
+				className={styles.input}
+				required
+				type="password"
+				name="password"
+				value={password}
+				autoComplete="off"
+				onChange={handleChange}
+			/>
+		</label>
 
-			<label className={styles.label}>
-				Password
-				<input type="password" name="password" value={password} onChange={handleChange} />
-			</label>
-
-			<button type="submit" className={styles.button}>
-				Login
-			</button>
-		</form>
-	</div>
+		<button type="submit" className={styles.button}>
+			Login
+		</button>
+	</form>
 );
 
 Login.propTypes = {

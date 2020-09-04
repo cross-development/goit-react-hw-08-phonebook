@@ -7,7 +7,8 @@ import { css } from '@emotion/core';
 
 const customCss = css`
 	display: block;
-	margin: 60% 38%;
+	margin: 0 auto;
+	text-align: center;
 
 	@media (min-width: 768px) {
 		margin: 10% 45%;
