@@ -1,11 +1,19 @@
+.nav {
+	display: flex;
+	flex: 0 0 20%;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .link {
-	display: 'inline-block';
+	display: inline-block;
 	text-decoration: none;
 	padding: 12;
 	font-weight: 700;
-	color: '#2A363B';
+	color: #212121;
+	text-transform: uppercase;
 }
 
 .activeLink {
-	color: '#E84A5F';
+	color: #3947a7;
 }

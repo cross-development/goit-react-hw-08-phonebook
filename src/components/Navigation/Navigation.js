@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 //Redux
 import { authSelectors } from 'redux/auth';
 //Routes
-import routes from 'routes';
+// import routes from 'routes';
 //Styles
 import styles from './Navigation.module.css';
 
 const Navigation = ({ isAuthenticated }) => (
-	<nav>
+	<nav className={styles.nav}>
 		<NavLink to="/" exact className={styles.link} activeClassName={styles.activeLink}>
 			Home
 		</NavLink>

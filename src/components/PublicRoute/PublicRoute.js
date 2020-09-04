@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 //Redux
 import { authSelectors } from 'redux/auth';
 
-const PublicRoute = ({ component: Component, isAuthenticated, restricted, ...routeProps }) => (
+const PublicRoute = ({ component: Component, isAuthenticated, ...routeProps }) => (
 	<Route
 		{...routeProps}
 		render={props =>

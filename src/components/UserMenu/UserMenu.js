@@ -9,14 +9,15 @@ import styles from './UserMenu.module.css';
 const UserMenu = ({ email, onLogout }) => (
 	<div className={styles.container}>
 		<span className={styles.email}>Welcome, {email}</span>
-		<button type="button" onClick={onLogout}>
+		<button className={styles.button} type="button" onClick={onLogout}>
 			Logout
 		</button>
 	</div>
 );
 
+//Пофиксить проптайпы по имейлу
 UserMenu.propTypes = {
-	email: PropTypes.string.isRequired,
+	email: PropTypes.string,
 	onLogout: PropTypes.func.isRequired,
 };
 
