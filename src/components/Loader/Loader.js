@@ -7,20 +7,8 @@ import { css } from '@emotion/core';
 
 const customCss = css`
 	display: block;
-	margin: 0 auto;
+	margin: auto;
 	text-align: center;
-
-	@media (min-width: 768px) {
-		margin: 10% 45%;
-	}
-
-	@media (min-width: 1024px) {
-		margin: 25% 45%;
-	}
-
-	@media (min-width: 1440px) {
-		margin: 15% auto;
-	}
 `;
 
 const Loader = () => <BeatLoader size={20} color={'#1e3799'} loading={true} css={customCss} />;

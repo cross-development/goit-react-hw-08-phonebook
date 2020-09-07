@@ -52,10 +52,6 @@ const logOut = () => dispatch => {
 };
 
 const getCurrentUser = () => (dispatch, getState) => {
-	// const {
-	// 	auth: { token: existToken },
-	// } = getState();
-
 	const state = getState();
 	const { token: existToken } = state.auth;
 

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 //Redux
-import { contactsOperations, contactsSelectors } from 'redux/contacts';
+import { contactsOperations } from 'redux/contacts';
 //Styles
 import styles from './ContactListItem.module.css';
 
@@ -25,12 +25,8 @@ ContactListItem.propTypes = {
 	onRemove: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, { id }) => ({
-	...contactsSelectors.getContactById(state, id),
-});
-
 const mapDispatchToProps = (dispatch, { id }) => ({
 	onRemove: () => dispatch(contactsOperations.removeContact(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactListItem);
+export default connect(null, mapDispatchToProps)(ContactListItem);

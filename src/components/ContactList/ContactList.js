@@ -13,9 +13,9 @@ import fadeContactList from 'animation/fadeContactList.module.css';
 
 const ContactList = ({ contacts }) => (
 	<TransitionGroup component="ul" className={styles.contactList}>
-		{contacts.map(({ id }) => (
+		{contacts.map(({ id, ...contactInfo }) => (
 			<CSSTransition key={id} timeout={250} classNames={fadeContactList}>
-				<ContactListItem id={id} />
+				<ContactListItem id={id} {...contactInfo} />
 			</CSSTransition>
 		))}
 	</TransitionGroup>

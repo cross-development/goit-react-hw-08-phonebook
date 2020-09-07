@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 //Components
 import Logo from '../Logo';
+import Loader from '../Loader';
 import AuthNav from '../AuthNav';
 import UserMenu from '../UserMenu';
 import Navigation from '../Navigation';
@@ -14,14 +15,16 @@ import { authSelectors } from 'redux/auth';
 import styles from './AppBar.module.css';
 import fadeLogo from 'animation/fadeLogo.module.css';
 
-const AppBar = ({ isAuthenticated }) => (
+const AppBar = ({ isAuthenticated, getUser }) => (
 	<header className={styles.header}>
 		<CSSTransition in={true} classNames={fadeLogo} timeout={500} appear unmountOnExit>
 			<Logo />
 		</CSSTransition>
 
 		<Navigation />
-		{isAuthenticated ? <UserMenu /> : <AuthNav />}
+
+		{(getUser && <UserMenu />) || (isAuthenticated && !getUser && <Loader />)}
+		{!isAuthenticated && <AuthNav />}
 	</header>
 );
 
@@ -34,6 +37,7 @@ AppBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
+	getUser: authSelectors.getUserEmail(state),
 	isAuthenticated: authSelectors.isAuthenticated(state),
 });
 

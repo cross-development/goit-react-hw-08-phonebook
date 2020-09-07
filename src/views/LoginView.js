@@ -1,12 +1,19 @@
 //Core
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 //Components
+import Error from 'components/Error';
 import Login from 'components/Login';
 //Redux
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 
 class LoginView extends Component {
+	static propTypes = {
+		onLogin: PropTypes.func.isRequired,
+		hasError: PropTypes.object,
+	};
+
 	state = {
 		email: '',
 		password: '',
@@ -23,17 +30,25 @@ class LoginView extends Component {
 
 	render() {
 		return (
-			<Login
-				{...this.state}
-				handleChange={this.onHandleChange}
-				handleSubmit={this.onHandleSubmit}
-			/>
+			<>
+				{this.props.hasError && <Error message="User with this email address not found" />}
+
+				<Login
+					{...this.state}
+					handleChange={this.onHandleChange}
+					handleSubmit={this.onHandleSubmit}
+				/>
+			</>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	hasError: authSelectors.hasError(state),
+});
 
 const mapDispatchToProps = {
 	onLogin: authOperations.logIn,
 };
 
-export default connect(null, mapDispatchToProps)(LoginView);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
