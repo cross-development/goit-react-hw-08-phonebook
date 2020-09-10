@@ -30,15 +30,18 @@ class RegisterView extends Component {
 	};
 
 	render() {
+		const { hasError } = this.props;
+		const isErrorTypeRegister = hasError && hasError.config.url.includes('register');
+
 		return (
 			<>
-				{this.props.hasError && <Error message="User with this email already exists" />}
-
 				<Register
 					{...this.state}
 					handleChange={this.onHandleChange}
 					handleSubmit={this.onHandleSubmit}
 				/>
+
+				{isErrorTypeRegister && <Error message="User with this email already exists" />}
 			</>
 		);
 	}
