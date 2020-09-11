@@ -12,7 +12,7 @@ const user = createReducer(initialUserState, {
 	[authActions.getCurrentUserSuccess]: (state, { payload }) => payload,
 	[authActions.registerSuccess]: (state, { payload }) => payload.user,
 	[authActions.loginSuccess]: (state, { payload }) => payload.user,
-	[authActions.logoutSuccess]: initialUserState,
+	[authActions.logoutSuccess]: () => initialUserState,
 });
 
 //Token reducer
