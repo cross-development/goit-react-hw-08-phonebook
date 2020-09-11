@@ -14,31 +14,35 @@ class LoginView extends Component {
 		hasError: PropTypes.object,
 	};
 
+	static defaultProps = {
+		hasError: null,
+	};
+
 	state = {
 		email: '',
 		password: '',
 	};
 
-	onHandleChange = e => this.setState({ [e.target.name]: e.target.value });
+	handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-	onHandleSubmit = e => {
+	handleSubmit = e => {
 		e.preventDefault();
 
 		this.props.onLogin({ ...this.state });
 		this.setState({ email: '', password: '' });
 	};
 
-	render() {
+	defineErrorType = () => {
 		const { hasError } = this.props;
-		const isErrorTypeLogin = hasError && hasError.config.url.includes('login');
+		return hasError && hasError.config.url.includes('login');
+	};
+
+	render() {
+		const isErrorTypeLogin = this.defineErrorType();
 
 		return (
 			<>
-				<Login
-					{...this.state}
-					handleChange={this.onHandleChange}
-					handleSubmit={this.onHandleSubmit}
-				/>
+				<Login {...this.state} onChange={this.handleChange} onSubmit={this.handleSubmit} />
 
 				{isErrorTypeLogin && <Error message="User with this email address not found" />}
 			</>

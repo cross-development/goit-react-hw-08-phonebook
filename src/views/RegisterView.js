@@ -14,32 +14,36 @@ class RegisterView extends Component {
 		hasError: PropTypes.object,
 	};
 
+	static defaultProps = {
+		hasError: null,
+	};
+
 	state = {
 		name: '',
 		email: '',
 		password: '',
 	};
 
-	onHandleChange = e => this.setState({ [e.target.name]: e.target.value });
+	handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-	onHandleSubmit = e => {
+	handleSubmit = e => {
 		e.preventDefault();
 
 		this.props.onRegister({ ...this.state });
 		this.setState({ name: '', email: '', password: '' });
 	};
 
-	render() {
+	defineErrorType = () => {
 		const { hasError } = this.props;
-		const isErrorTypeRegister = hasError && hasError.config.url.includes('register');
+		return hasError && hasError.config.url.includes('login');
+	};
+
+	render() {
+		const isErrorTypeRegister = this.defineErrorType();
 
 		return (
 			<>
-				<Register
-					{...this.state}
-					handleChange={this.onHandleChange}
-					handleSubmit={this.onHandleSubmit}
-				/>
+				<Register {...this.state} onChange={this.handleChange} onSubmit={this.handleSubmit} />
 
 				{isErrorTypeRegister && <Error message="User with this email already exists" />}
 			</>

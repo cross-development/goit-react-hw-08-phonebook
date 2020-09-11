@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 //Styles
 import styles from './Register.module.css';
 
-const Register = ({ name, email, password, handleChange, handleSubmit }) => (
-	<form onSubmit={handleSubmit} className={styles.form}>
+const Register = ({ name, email, password, onChange, onSubmit }) => (
+	<form onSubmit={onSubmit} className={styles.form}>
 		<label className={styles.label}>
 			Name
 			<input
@@ -15,7 +15,7 @@ const Register = ({ name, email, password, handleChange, handleSubmit }) => (
 				name="name"
 				value={name}
 				autoComplete="off"
-				onChange={handleChange}
+				onChange={onChange}
 			/>
 		</label>
 
@@ -28,7 +28,7 @@ const Register = ({ name, email, password, handleChange, handleSubmit }) => (
 				name="email"
 				value={email}
 				autoComplete="off"
-				onChange={handleChange}
+				onChange={onChange}
 			/>
 		</label>
 
@@ -41,7 +41,7 @@ const Register = ({ name, email, password, handleChange, handleSubmit }) => (
 				name="password"
 				value={password}
 				autoComplete="off"
-				onChange={handleChange}
+				onChange={onChange}
 			/>
 		</label>
 
@@ -55,8 +55,8 @@ Register.propTypes = {
 	name: PropTypes.string.isRequired,
 	email: PropTypes.string.isRequired,
 	password: PropTypes.string.isRequired,
-	handleChange: PropTypes.func.isRequired,
-	handleSubmit: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 };
 
 export default Register;
