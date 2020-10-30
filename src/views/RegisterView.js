@@ -1,11 +1,11 @@
 //Core
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Components
 import Error from 'components/Error';
 import Register from 'components/Register';
 //Redux
+import { connect } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 
 class RegisterView extends Component {
@@ -24,7 +24,7 @@ class RegisterView extends Component {
 		password: '',
 	};
 
-	handleChange = e => this.setState({ [e.target.name]: e.target.value });
+	handleChange = ({ target: { name, value } }) => this.setState({ [name]: value });
 
 	handleSubmit = e => {
 		e.preventDefault();
@@ -35,7 +35,7 @@ class RegisterView extends Component {
 
 	defineErrorType = () => {
 		const { hasError } = this.props;
-		return hasError && hasError.config.url.includes('login');
+		return hasError && hasError.config.url.includes('signup');
 	};
 
 	render() {

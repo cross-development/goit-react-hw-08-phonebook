@@ -1,7 +1,6 @@
 //Core
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Components
 import Main from 'components/Main';
 import Filter from 'components/Filter';
@@ -9,12 +8,19 @@ import Section from 'components/Section';
 import ContactList from 'components/ContactList';
 import ContactForm from 'components/ContactForm';
 //Redux
+import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 
 class ContactsView extends Component {
 	static propTypes = {
 		onGetContacts: PropTypes.func.isRequired,
-		contacts: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+		contacts: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.string.isRequired,
+				name: PropTypes.string.isRequired,
+				number: PropTypes.string.isRequired,
+			}).isRequired,
+		).isRequired,
 	};
 
 	componentDidMount() {

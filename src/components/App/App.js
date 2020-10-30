@@ -2,15 +2,15 @@
 import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 //Components
 import Layout from '../Layout';
 import Loader from '../Loader';
-import PublicRoute from '../PublicRoute';
-import PrivateRoute from '../PrivateRoute';
 //Router
 import routes from 'routes';
+import PublicRoute from 'routes/PublicRoute';
+import PrivateRoute from 'routes/PrivateRoute';
 //Redux
+import { connect } from 'react-redux';
 import { authOperations } from 'redux/auth';
 
 export class App extends Component {

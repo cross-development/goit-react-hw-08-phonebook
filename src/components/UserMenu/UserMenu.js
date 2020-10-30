@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Redux
+import { connect } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 //Styles
 import styles from './UserMenu.module.css';
@@ -15,7 +15,6 @@ const UserMenu = ({ email, onLogout }) => (
 	</div>
 );
 
-//Пофиксить проптайпы по имейлу
 UserMenu.propTypes = {
 	email: PropTypes.string.isRequired,
 	onLogout: PropTypes.func.isRequired,

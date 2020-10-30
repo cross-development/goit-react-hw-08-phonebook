@@ -1,14 +1,14 @@
 //Core
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition } from 'react-transition-group';
-import { connect } from 'react-redux';
 //Components
 import Notification from 'components/Notification';
 //Redux
+import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 //Styles
 import styles from './ContactForm.module.css';
+import { CSSTransition } from 'react-transition-group';
 import fadeNotification from 'animation/fadeNotification.module.css';
 
 export class ContactForm extends Component {
@@ -24,7 +24,7 @@ export class ContactForm extends Component {
 
 	setNotificationTimeout = delay => setTimeout(() => this.setState({ isNotice: false }), delay);
 
-	handleChange = e => this.setState({ [e.target.name]: e.target.value });
+	handleChange = ({ target: { name, value } }) => this.setState({ [name]: value });
 
 	handleFormSubmit = e => {
 		e.preventDefault();

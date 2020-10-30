@@ -1,11 +1,11 @@
 //Core
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Components
 import Error from 'components/Error';
 import Login from 'components/Login';
 //Redux
+import { connect } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 
 class LoginView extends Component {
@@ -23,7 +23,7 @@ class LoginView extends Component {
 		password: '',
 	};
 
-	handleChange = e => this.setState({ [e.target.name]: e.target.value });
+	handleChange = ({ target: { name, value } }) => this.setState({ [name]: value });
 
 	handleSubmit = e => {
 		e.preventDefault();

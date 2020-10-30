@@ -1,8 +1,6 @@
 //Core
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 //Components
 import Logo from '../Logo';
 import Loader from '../Loader';
@@ -10,10 +8,12 @@ import AuthNav from '../AuthNav';
 import UserMenu from '../UserMenu';
 import Navigation from '../Navigation';
 //Redux
+import { connect } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 //Styles
 import styles from './AppBar.module.css';
 import fadeLogo from 'animation/fadeLogo.module.css';
+import { CSSTransition } from 'react-transition-group';
 
 const AppBar = ({ isAuthenticated, getUser }) => (
 	<header className={styles.header}>

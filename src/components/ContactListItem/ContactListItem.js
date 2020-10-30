@@ -1,8 +1,8 @@
 //Core
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Redux
+import { connect } from 'react-redux';
 import { contactsOperations } from 'redux/contacts';
 //Styles
 import styles from './ContactListItem.module.css';

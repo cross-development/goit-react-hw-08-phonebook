@@ -3,6 +3,7 @@ import axios from 'axios';
 //Redux
 import authActions from './authActions';
 
+//Axios defaults config
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
@@ -55,9 +56,7 @@ const getCurrentUser = () => (dispatch, getState) => {
 	const state = getState();
 	const { token: existToken } = state.auth;
 
-	if (!existToken) {
-		return;
-	}
+	if (!existToken) return;
 
 	token.set(existToken);
 	dispatch(authActions.getCurrentUserRequest());

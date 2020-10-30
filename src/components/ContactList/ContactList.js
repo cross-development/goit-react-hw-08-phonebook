@@ -1,15 +1,15 @@
 //Core
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 //Components
 import ContactListItem from '../ContactListItem';
 //Redux
+import { connect } from 'react-redux';
 import { contactsSelectors } from 'redux/contacts';
 //Styles
 import styles from './ContactList.module.css';
 import fadeContactList from 'animation/fadeContactList.module.css';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ContactList = ({ contacts }) => (
 	<TransitionGroup component="ul" className={styles.contactList}>

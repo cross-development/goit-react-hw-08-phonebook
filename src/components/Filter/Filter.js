@@ -1,10 +1,10 @@
 //Core
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Redux
-import contactsActions from 'redux/contacts/contactsActions';
+import { connect } from 'react-redux';
 import { contactsSelectors } from 'redux/contacts';
+import contactsActions from 'redux/contacts/contactsActions';
 //Styles
 import styles from './Filter.module.css';
 

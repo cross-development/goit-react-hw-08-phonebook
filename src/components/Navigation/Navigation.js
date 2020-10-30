@@ -1,11 +1,9 @@
 //Core
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 //Redux
+import { connect } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-//Routes
-// import routes from 'routes';
 //Styles
 import styles from './Navigation.module.css';
 
